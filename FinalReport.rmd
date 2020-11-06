@@ -29,10 +29,35 @@ $H_A$: Among the targetedt population, the drug does have an effect in preventin
 # Methods
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method. Discuss what data manipulations may be needed for example subsetting or other binning procedures and what sort of graphical displays and inferential tools will be used!-->
-
+ We will use the cat~cat template
 # Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
+
+#Descriptive results
+
+#Female report
+
+```{r}
+DataF= filter(FinalData, sex== "gal")
+barchartGC(~infected + treatment,data=DataF, type="percent", main="Gal")
+
+```
+
+Among the females who contracted covid19, it looks like twice as many took the placebo, therefore it appears that the vaccine does have an effect that prevents females from getting covid19
+
+
+
+#Numerical summary  
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=DataF)
+rowPerc(table1)
+colPerc(table1)
+```
+
+
+
 
 
 
