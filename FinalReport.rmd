@@ -57,6 +57,14 @@ colPerc(table1)
 ```
 
 
+#LGBT Report
+
+```{r}
+DataLGBTQ = filter(FinalData,LGBTQ=="gay")
+barchartGC(~infected + treatment,data=DataLGBTQ)
+barchartGC(~infected + treatment,data=DataLGBTQ, type="percent", main="LGBTQ")
+
+```
 
 
 
