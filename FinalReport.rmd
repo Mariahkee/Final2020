@@ -51,17 +51,6 @@ barchartGC(~infected + treatment,data=DataF, type="percent", main="Gal")
 Among the females who contracted COVID-19, it looks like twice as many took the placebo, therefore it appears that the vaccine DOES have an effect that prevents females from getting COVID-19.    
 
 
-
-Among the females who contracted covid19, it looks like twice as many took the placebo, therefore it appears that the vaccine does have an effect that prevents females from getting covid19
-
-#Guy Report
-```{r}
-DataF= filter(FinalData, sex== "guy")
-barchartGC(~infected + treatment,data=DataF, type="percent", main="Guy")
-```
-
-
-It appears that the vaccine has a negative effect on the guys since they are more likely to get covid19 if they recieve the vaccine.
 #Numerical summary  
 
 ```{r}
@@ -75,49 +64,56 @@ chisqtestGC(table1)
 fisher.test(table1)
 ```
 
-#LGBT Report
 
-```{r}
-DataLGBTQ = filter(FinalData,LGBTQ=="gay")
-barchartGC(~infected + treatment,data=DataLGBTQ)
-barchartGC(~infected + treatment,data=DataLGBTQ, type="percent", main="LGBTQ")
 
-```
+
+#Inferential  
+
 
 ```{r}
 chisq.test(table1)
 chisqtestGC(table1)
 fisher.test(table1)
+``` 
+This Chi Square tests goes into detail and gave us a P. Value of 2.2e-16<0.05. It shows us that the vaccine did make an effect in the female population.
+
+
+## Male Report  
+```{r}
+DataG= filter(FinalData, sex== "guy")
+barchartGC(~infected + treatment,data=DataG)
+barchartGC(~infected + treatment,data=DataG, type="percent", main= "guys")
+
 ```
 
-From the graph above, it appears that the vaccine has a negative effect on gay population since there is more than 60% of chance for them to get covid19 if they recieve the vaccine.
+It appears that the vaccine has a negative effect on the guys population, since they are likely getting Covid-19 since they received the vaccine.  
 
-#Drug users report
-
-```{r}
-DrugUser = filter(FinalData,DrugUser=="yes")
-barchartGC(~infected + treatment,data=DrugUser)
-barchartGC(~infected + treatment,data=DrugUser, type="percent", main="DrugUser")
-
-```
+# Numerical Summary  
+In this Numerical summary we can see that The MALES who took the drug 58.16 got infected with covid-19 and 48.54 who also took the vaccine were ok. This vaccine had a negative effect on the Male population.  
 
 ```{r}
-chisq.test(table1)
-chisqtestGC(table1)
-fisher.test(table1)
-```
 
-#Numerical summary (gal)
-
-```{r}
-table1 <- xtabs(~infected + treatment,data=DataF)
+table1 <- xtabs(~infected + treatment, data=DataG)
 rowPerc(table1)
 colPerc(table1)
 ```
+
+#Inferential  
+
+
 ```{r}
 chisq.test(table1)
 chisqtestGC(table1)
 fisher.test(table1)
+```
+This Chi Square tests goes into detail and gave us a P. Value of 0.0005801<0.05. It shows us that the vaccine did make an effect in the Males population.
+# LGBTQ community    
+
+```{r}
+DataLGBTQ= filter(FinalData, LGBTQ== "gay")
+barchartGC(~infected + treatment,data=DataLGBTQ)
+barchartGC(~infected + treatment,data=DataLGBTQ, type="percent", main="LGBTQ")
+	
 ```
 
 
